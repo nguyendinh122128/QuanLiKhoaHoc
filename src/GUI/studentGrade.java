@@ -26,8 +26,8 @@ public class studentGrade extends javax.swing.JFrame {
     // Tạo một arr để đựng data tìm kiếm
     ArrayList<studentGradeDTO> arr_studentGrades_find = new ArrayList<>();
     // Tạo 1 model để đựng dữ table tìm kiếm
-//    DefaultTableModel model_studentGrade_find = new DefaultTableModel();
-//GỌi BUS
+    // DefaultTableModel model_studentGrade_find = new DefaultTableModel();
+    // GỌi BUS
     studentGradeBUS studentGrade_BUS ;
     
     
@@ -138,8 +138,13 @@ public class studentGrade extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 328, 0, 291);
         jPanel1.add(jLabel1, gridBagConstraints);
 
+        jPanel2.setBackground(new java.awt.Color(51, 204, 0));
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("EnrollmentID");
 
+        txtEnrollmentID.setBackground(new java.awt.Color(153, 255, 255));
+        txtEnrollmentID.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtEnrollmentID.setText("0");
 
         jLabel4.setText("CourseID");
@@ -158,10 +163,26 @@ public class studentGrade extends javax.swing.JFrame {
         });
 
         btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         btnUpdate.setText("Update");
 
         btnExit.setText("Exit");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
+
+        txtCourseID.setBackground(new java.awt.Color(153, 255, 255));
+        txtCourseID.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+
+        txtStudentID.setBackground(new java.awt.Color(153, 255, 255));
+        txtStudentID.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -201,7 +222,7 @@ public class studentGrade extends javax.swing.JFrame {
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtStudentID, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(22, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,7 +243,7 @@ public class studentGrade extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txtGrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdd)
                     .addComponent(btnDelete))
@@ -232,6 +253,8 @@ public class studentGrade extends javax.swing.JFrame {
                 .addComponent(btnExit)
                 .addGap(23, 23, 23))
         );
+
+        jPanel3.setBackground(new java.awt.Color(51, 204, 0));
 
         tblStudenGrade.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -304,8 +327,7 @@ public class studentGrade extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addComponent(txtFind, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -313,8 +335,8 @@ public class studentGrade extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE)
@@ -391,11 +413,7 @@ public class studentGrade extends javax.swing.JFrame {
         arr_studentGrades_find = new ArrayList<>();
         //reset txtFind
         txtFind.setText(null);
-        studentGrade stdGrade =  new studentGrade();
-        stdGrade.setLocationRelativeTo(null);
-        stdGrade.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        stdGrade.setVisible(true);
-        dispose();
+        khoiTao_tbl_StudentGrade();
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
@@ -405,6 +423,36 @@ public class studentGrade extends javax.swing.JFrame {
         aNSt.setDefaultCloseOperation(EXIT_ON_CLOSE);
         aNSt.setVisible(true);
     }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        int studentGradeID_needDelete = Integer.parseInt(txtEnrollmentID.getText());
+        if(studentGradeID_needDelete == 0){
+            JOptionPane.showMessageDialog(null, "Chọn Hàng để xóa");
+            return;
+        }
+        
+        studentGradeDTO stdDelete = new studentGradeDTO();
+        
+        stdDelete.setEnrollmentID(studentGradeID_needDelete);
+        
+        try {
+            if (JOptionPane.showConfirmDialog(null, "Delete EnrollmentID : "+studentGradeID_needDelete, "Xác nhận", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                studentGrade_BUS.delete(stdDelete);
+            }
+        } catch (Exception e) {
+            System.out.println("GUI.studentGrade.btnDeleteActionPerformed() Lỗi không xóa được dữ liệu");
+        }
+        khoiTao_tbl_StudentGrade();
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        // TODO add your handling code here:
+        menu mn = new menu();
+        mn.setVisible(true);
+        mn.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        dispose();
+    }//GEN-LAST:event_btnExitActionPerformed
 
     private void showCbbCourse(){
         

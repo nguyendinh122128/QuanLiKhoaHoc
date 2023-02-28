@@ -181,7 +181,7 @@ public class addNewStudentGrade extends javax.swing.JFrame {
 
         }
         Float grade = Float.parseFloat(txtGrade.getText());
-        while (grade > 4 || grade < 1) {            
+        while (grade > 4 || grade < 0) {            
             JOptionPane.showMessageDialog(null, grade + " : Điểm không hợp lệ");
             return;
         }
@@ -301,7 +301,6 @@ public class addNewStudentGrade extends javax.swing.JFrame {
             public void run() {
                 addNewStudentGrade add = new addNewStudentGrade();
                 add.setLocationRelativeTo(null);
-                add.setDefaultCloseOperation(EXIT_ON_CLOSE);
                 add.setVisible(true);
             }
         });
