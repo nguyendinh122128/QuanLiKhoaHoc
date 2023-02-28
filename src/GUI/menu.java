@@ -67,6 +67,11 @@ public class menu extends javax.swing.JFrame {
         });
 
         btnGetCourseInstructorGui.setText("CourseInstructor");
+        btnGetCourseInstructorGui.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGetCourseInstructorGuiActionPerformed(evt);
+            }
+        });
 
         btnGetStudentgradeGui.setText("Studentgrade");
         btnGetStudentgradeGui.addActionListener(new java.awt.event.ActionListener() {
@@ -186,6 +191,10 @@ public class menu extends javax.swing.JFrame {
         st.setDefaultCloseOperation(EXIT_ON_CLOSE);
         dispose();
     }//GEN-LAST:event_btnGetStudentgradeGuiActionPerformed
+
+    private void btnGetCourseInstructorGuiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetCourseInstructorGuiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGetCourseInstructorGuiActionPerformed
 
     /**
      * @param args the command line arguments
