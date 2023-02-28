@@ -16,6 +16,7 @@ public class menu extends javax.swing.JFrame {
     public menu() {
         initComponents();
         this.setLocationRelativeTo(null);
+        //12123123213
     }
 
     /**
